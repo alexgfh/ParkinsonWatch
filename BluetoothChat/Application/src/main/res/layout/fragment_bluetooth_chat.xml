@@ -26,16 +26,28 @@
         android:layout_weight="1"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
+
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/my_chart"
+        android:id="@+id/f_chart"
         android:layout_width="332dp"
         android:layout_height="182dp"
         android:layout_marginTop="48dp"
         android:alpha="0.4">
 
     </com.github.mikephil.charting.charts.LineChart>
+    <!--<com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/my_chart"
+        android:layout_width="332dp"
+        android:layout_height="182dp"
+        android:layout_marginTop="48dp"
+        android:alpha="0.4">
+
+    </com.github.mikephil.charting.charts.LineChart>-->
+
 
     <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >

@@ -1,18 +1,24 @@
 package com.medtechbr.parkinsonwatch
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.*
+import android.provider.Settings
 import android.support.wearable.activity.WearableActivity
 import android.util.Log
 import android.view.View
+import android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
 import android.widget.Toast
 import com.medtechbr.parkinsonwatch.R.id.text
 import kotlinx.android.synthetic.main.activity_main.*
 import java.nio.ByteBuffer
+import java.util.*
 
 class MainActivity : WearableActivity(), SensorEventListener {
 
@@ -59,7 +65,7 @@ class MainActivity : WearableActivity(), SensorEventListener {
                     val readBuf = msg.obj as ByteArray
                     // construct a string from the valid bytes in the buffer
                     val readMessage = String(readBuf, 0, msg.arg1)
-                    text.text = readMessage
+                    //text.text = readMessage
 
                 }
                 Constants.MESSAGE_DEVICE_NAME -> {
@@ -75,12 +81,32 @@ class MainActivity : WearableActivity(), SensorEventListener {
             }
         }
     }
-
+    var flashing = false
+    var active = false
+    var t = Timer()
     fun vibrate(v: View) {
-
+        if (active)
+            return
+        active = true
+        t.purge()
         val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
-        vibrator.vibrate(1000)
-        chatService?.write("vibrated".toByteArray())
+        t.scheduleAtFixedRate(object: TimerTask(){
+
+            var counter = 0;
+            override fun run() {
+                runOnUiThread {
+                    toggleFlash()
+
+                }
+                vibrator.vibrate(300)
+                //toggleFlash()
+                counter++;
+                if (counter==4) {
+                    this.cancel()
+                    active = false
+                }
+            }
+        }, 0, 1000)
     }
 
     public override fun onResume() {
@@ -98,18 +124,29 @@ class MainActivity : WearableActivity(), SensorEventListener {
         }
     }
 
+    fun toggleFlash() {
+        val layout = window.attributes
+        layout.screenBrightness = if (this.flashing) 0.0f else 1.0f
+        val white = Color.argb(255,255,255,255)
+        val black = Color.argb(255,0,0,0)
+        frameLayout.foregroundTintList = if (this.flashing) ColorStateList.valueOf(black) else ColorStateList.valueOf(white)
+        window.attributes = layout
+        frameLayout.foreground
+        flashing = !flashing
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.addFlags(FLAG_KEEP_SCREEN_ON)
         chatService = BluetoothChatService(applicationContext, mHandler)
 
         val sensorManager: SensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val sensor: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         sensorManager.registerListener(this, sensor, 40000)
-        //ctx = this.applicationContext as Context
         setContentView(R.layout.activity_main)
 
-        text.text="heys"
+        //text.text="heys"
 
         // Enables Always-on
         setAmbientEnabled()

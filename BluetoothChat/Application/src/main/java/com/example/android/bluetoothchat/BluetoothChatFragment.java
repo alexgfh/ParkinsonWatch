@@ -44,6 +44,7 @@ import android.widget.Toast;
 
 import com.example.android.common.logger.Log;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
@@ -152,11 +153,11 @@ public class BluetoothChatFragment extends Fragment {
         }
     }
     private LineChart chart;
+    private LineChart f_chart;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        //chart = (LineChart) getView().findViewById(R.id.my_chart);
         return inflater.inflate(R.layout.fragment_bluetooth_chat, container, false);
     }
 
@@ -165,6 +166,9 @@ public class BluetoothChatFragment extends Fragment {
         mConversationView = (ListView) view.findViewById(R.id.in);
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         mSendButton = (Button) view.findViewById(R.id.button_send);
+
+        //chart = (LineChart) getView().findViewById(R.id.my_chart);
+        f_chart = (LineChart) getView().findViewById(R.id.f_chart);
     }
 
     /**
@@ -291,14 +295,59 @@ public class BluetoothChatFragment extends Fragment {
      */
 
     private final Handler mHandler = new Handler() {
-        /*private int windowSize = 32;
+
+        private int windowSize = 32;
         private float[] linear_acceleration = new float[windowSize];
+
+        ArrayList<Entry> entries = new ArrayList<>(windowSize);
+        private void plotFFT() {
+            FFT fft = new FFT(windowSize);
+            float[] y = new float[windowSize];
+            float[] x = linear_acceleration.clone();
+            fft.fft(x, y);
+
+
+
+
+
+            float max = -10000.0f;
+            for(int t =2;t<windowSize;t++) {
+                float v = ((x[t]*x[t]+y[t]*y[t])/windowSize);
+                if(v>max)
+                    max=v;
+            }
+
+            entries.add(new Entry(((float)g), max));
+            //mag.forEachIndexed({ind, v -> entries.add(Entry(ind.toFloat(), v)) })
+
+            //accel_val.text = "frequency-bin: "+mag.indexOf(mag.max()!!).toString()
+
+            LineDataSet dataSet = new LineDataSet(entries, "tremor");
+
+            dataSet.setCircleRadius(4.0f);
+            dataSet.setDrawValues(false);
+            LineData lineData = new LineData(dataSet);
+            YAxis leftAxis = f_chart.getAxisLeft();
+            XAxis xx = f_chart.getXAxis();
+            xx.setAxisMinimum(0.0f);
+            //xx.setAxisMaximum(3500.0f);
+            leftAxis.setAxisMaximum(150.0f);
+            leftAxis.setAxisMinimum(0.0f);
+            f_chart.setData(lineData);
+            f_chart.invalidate();
+        }
         private int i = 0;
+        private int g = 0;
         private void plot(float nF) {
+            if(i==windowSize-1)
+                i=0;
+            else
+                i++;
             linear_acceleration[i] = nF;
-            List<Entry> entries = new ArrayList<Entry>(windowSize);
+
+            /*List<Entry> entries = new ArrayList<Entry>(windowSize);
             for(int k=0;k<windowSize;k++) {
-                entries.add(new Entry(k, linear_acceleration[k]));
+                entries.add(new Entry((float)k, linear_acceleration[k]));
             }
             LineDataSet dataSet = new LineDataSet(entries, "label");
             LineData lineData = new LineData(dataSet);
@@ -306,9 +355,11 @@ public class BluetoothChatFragment extends Fragment {
             leftAxis.setAxisMaximum(5.0f);
             leftAxis.setAxisMinimum(-5.0f);
             chart.setData(lineData);
-            chart.invalidate();
-
-        }*/
+            chart.invalidate();*/
+            g++;
+            if((g%windowSize)==0)
+                plotFFT();
+        }
 
         @Override
         public void handleMessage(Message msg) {
@@ -340,6 +391,7 @@ public class BluetoothChatFragment extends Fragment {
                     // construct a string from the valid bytes in the buffer
                     Float f = ByteBuffer.wrap(readBuf).getFloat();
                     String readMessage = f.toString();
+                    plot(f);
                     //String readMessage = new String(readBuf, 0, msg.arg1);
 
                     mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);

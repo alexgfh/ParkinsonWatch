@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\Alex\Desktop\BluetoothChat\Application\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\Alex\Desktop\BluetoothChat\Application\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\src\debug\jniLibs"/></dataSet></merger>

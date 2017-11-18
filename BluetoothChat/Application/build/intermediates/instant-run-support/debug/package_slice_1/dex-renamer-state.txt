@@ -1,4 +1,4 @@
-#Fri Nov 17 14:41:58 BRST 2017
-base.0=C\:\\Users\\Alex\\Desktop\\BluetoothChat\\Application\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+#Fri Nov 17 21:44:25 EET 2017
+base.0=C\:\\Users\\Alex\\Desktop\\parks\\BluetoothChat\\Application\\build\\intermediates\\transforms\\dexMerger\\debug\\1
 renamed.0=classes.dex
-file.0=C\:\\Users\\Alex\\Desktop\\BluetoothChat\\Application\\build\\intermediates\\transforms\\dexMerger\\debug\\1\\classes.dex
+file.0=C\:\\Users\\Alex\\Desktop\\parks\\BluetoothChat\\Application\\build\\intermediates\\transforms\\dexMerger\\debug\\1\\classes.dex

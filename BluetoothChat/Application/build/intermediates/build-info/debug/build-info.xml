@@ -6,126 +6,100 @@
     density="420dpi"
     format="10"
     plugin-version="3.0.0"
-    timestamp="1510947051585"
-    token="-8663796065301177553"
+    timestamp="1511022292630"
+    token="1279980424813159899"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="472" />
+        duration="667" />
     <task
         name="instant-run-dex"
-        duration="1890" />
+        duration="3016" />
     <task
         name="instant-run-transform"
-        duration="92" />
+        duration="121" />
     <task
         name="verifier"
-        duration="24" />
+        duration="38" />
 
     <artifact
-        location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\reload-dex\debug\classes.dex"
+        location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\reload-dex\debug\classes.dex"
         type="RELOAD_DEX" />
 
     <build
         build-mode="FULL"
-        timestamp="1510937080110"
+        timestamp="1511021331099"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\outputs\apk\debug\Application-debug.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\outputs\apk\debug\Application-debug.apk"
             type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1510937198016"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="CLASS_ADDED"
-        timestamp="1510939701525"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1510946652360"
-        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\outputs\apk\debug\Application-debug.apk"
-            type="SPLIT_MAIN" />
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1510946908778"
+        timestamp="1511022072240"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\outputs\apk\debug\Application-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="METHOD_DELETED"
+        timestamp="1511022118429"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1510946979711"
+        timestamp="1511022164610"
         verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-            type="RESOURCES" />
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\builds\debug\1511022164610\classes.dex"
+            type="RELOAD_DEX" />
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1510947051585"
+        timestamp="1511022292630"
         verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\Alex\Desktop\BluetoothChat\Application\build\intermediates\reload-dex\debug\classes.dex"
+            location="C:\Users\Alex\Desktop\parks\BluetoothChat\Application\build\intermediates\reload-dex\debug\classes.dex"
             type="RELOAD_DEX" />
     </build>
 
