@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -44,6 +45,7 @@ import android.widget.Toast;
 
 import com.example.android.common.logger.Log;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.DataSet;
@@ -163,7 +165,7 @@ public class BluetoothChatFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mConversationView = (ListView) view.findViewById(R.id.in);
+        //mConversationView = (ListView) view.findViewById(R.id.in);
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         mSendButton = (Button) view.findViewById(R.id.button_send);
 
@@ -180,7 +182,7 @@ public class BluetoothChatFragment extends Fragment {
         // Initialize the array adapter for the conversation thread
         mConversationArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.message);
 
-        mConversationView.setAdapter(mConversationArrayAdapter);
+       // mConversationView.setAdapter(mConversationArrayAdapter);
 
         // Initialize the compose field with a listener for the return key
         mOutEditText.setOnEditorActionListener(mWriteListener);
@@ -325,14 +327,27 @@ public class BluetoothChatFragment extends Fragment {
             LineDataSet dataSet = new LineDataSet(entries, "tremor");
 
             dataSet.setCircleRadius(4.0f);
+            dataSet.setCircleHoleRadius(5.1f);
             dataSet.setDrawValues(false);
+            //dataSet.setHighlightEnabled(true);
+            //dataSet.setHighLightColor(Color.GREEN);
+            dataSet.setLineWidth(2.0f);
             LineData lineData = new LineData(dataSet);
+            dataSet.setColor(Color.rgb(255,0,0));
+            dataSet.setCircleColor(Color.rgb(0,0,0));
             YAxis leftAxis = f_chart.getAxisLeft();
             XAxis xx = f_chart.getXAxis();
-            xx.setAxisMinimum(0.0f);
+            //xx.setAxisMinimum(0.0f);
             //xx.setAxisMaximum(3500.0f);
-            leftAxis.setAxisMaximum(150.0f);
+            leftAxis.setAxisMaximum(1000.0f);
             leftAxis.setAxisMinimum(0.0f);
+            Description descr = new Description();
+            descr.setText("");
+            YAxis rightYAxis = f_chart.getAxisRight();
+            rightYAxis.setEnabled(false);
+            //f_chart.highlightValue(g, entries.size()-1, false);
+            f_chart.getLegend().setEnabled(false);
+            f_chart.setDescription(descr);
             f_chart.setData(lineData);
             f_chart.invalidate();
         }

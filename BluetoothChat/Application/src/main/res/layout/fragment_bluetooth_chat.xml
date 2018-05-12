@@ -19,14 +19,6 @@
               android:layout_height="match_parent"
               android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/in"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll" />
-
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/f_chart"
         android:layout_width="332dp"

@@ -23,7 +23,7 @@ import java.util.*
 class MainActivity : WearableActivity(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent) {
-        val x = event.values[0]
+        val x = event.values[1]
         val xArr = floatArrayOf(x)
         val arr = FloatArray2ByteArray(xArr)
         chatService?.write(arr)
@@ -84,29 +84,41 @@ class MainActivity : WearableActivity(), SensorEventListener {
     var flashing = false
     var active = false
     var t = Timer()
+
+    override fun onPause() {
+        super.onPause()
+        setFlash(true)
+        t.cancel()
+        t = Timer()
+    }
     fun vibrate(v: View) {
-        if (active)
+
+        if (active) {
+            active = false
+            setFlash(true)
+            t.cancel()
+            t = Timer()
             return
+        }
         active = true
-        t.purge()
-        val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         t.scheduleAtFixedRate(object: TimerTask(){
 
             var counter = 0;
             override fun run() {
                 runOnUiThread {
-                    toggleFlash()
+
+                    flashing = !flashing
+                    setFlash(flashing)
 
                 }
-                vibrator.vibrate(300)
                 //toggleFlash()
-                counter++;
+                /*counter++;
                 if (counter==4) {
                     this.cancel()
                     active = false
-                }
+                }*/
             }
-        }, 0, 1000)
+        }, 0, 600)
     }
 
     public override fun onResume() {
@@ -124,15 +136,18 @@ class MainActivity : WearableActivity(), SensorEventListener {
         }
     }
 
-    fun toggleFlash() {
+    fun setFlash(toFlash: Boolean) {
+        if(!toFlash) {
+            val vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(300)
+        }
         val layout = window.attributes
-        layout.screenBrightness = if (this.flashing) 0.0f else 1.0f
+        layout.screenBrightness = if (toFlash) 0.0f else 1.0f
         val white = Color.argb(255,255,255,255)
         val black = Color.argb(255,0,0,0)
-        frameLayout.foregroundTintList = if (this.flashing) ColorStateList.valueOf(black) else ColorStateList.valueOf(white)
+        frameLayout.foregroundTintList = if (toFlash) ColorStateList.valueOf(black) else ColorStateList.valueOf(white)
         window.attributes = layout
         frameLayout.foreground
-        flashing = !flashing
     }
 
 
